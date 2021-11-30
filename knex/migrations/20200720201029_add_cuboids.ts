@@ -1,5 +1,5 @@
-import { Bag, Cuboid } from '../../src/models';
 import { Knex } from 'knex';
+import { Bag, Cuboid } from '../../src/models';
 
 export const up = (knex: Knex): Promise<void> =>
   knex.schema.createTable(Cuboid.tableName, (table: Knex.TableBuilder) => {
@@ -9,6 +9,7 @@ export const up = (knex: Knex): Promise<void> =>
     table.integer('height');
     table.integer('depth');
     table.integer('bagId');
+    table.integer('volume');
     table.foreign('bagId').references('id').inTable(Bag.tableName);
   });
 
